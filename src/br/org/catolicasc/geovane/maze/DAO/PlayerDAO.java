@@ -1,8 +1,13 @@
 package br.org.catolicasc.geovane.maze.DAO;
 
-import javax.persistence.Entity;
 
-@Entity
+
+
 public class PlayerDAO {
+
+	public PlayerDAO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 }
