@@ -1,6 +1,5 @@
 package br.org.catolicasc.geovane.maze.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,48 +15,54 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Score extends Game implements Bean ,Serializable {
+public class Score extends Player implements Bean {
 
-	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2333128915780409444L;
 
-	@XmlElementWrapper(name = "players")
-	@XmlElement(name = "player")
+	@XmlElementWrapper(name = "games")
+	@XmlElement(name = "game")
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Player> players;
+	private List<Game> games;
 	
 	@ManyToOne
-	private Game game;
+	private Player player;
+
 
 	public Score() {
 		super();
 	}
 
-	public Score(List<Player> players, Game game) {
+
+	public Score(List<Game> games, Player player) {
 		this();
-		this.players = players;
-		this.game = game;
+		this.games = games;
+		this.player = player;
 	}
+
+
+	public List<Game> getGames() {
+		return games;
+	}
+
+
+	public void setGames(List<Game> games) {
+		this.games = games;
+	}
+
+
+	public Player getPlayer() {
+		return player;
+	}
+
+
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+
 	
-
-	public List<Player> getPlayers() {
-		return players;
-	}
-
-	public void setPlayers(List<Player> players) {
-		this.players = players;
-	}
-
-	public Game getGame() {
-		return game;
-	}
-
-	public void setGame(Game game) {
-		this.game = game;
-	}
-
+	
 
 }

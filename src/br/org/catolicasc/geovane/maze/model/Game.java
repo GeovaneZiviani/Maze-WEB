@@ -2,14 +2,18 @@ package br.org.catolicasc.geovane.maze.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
+@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Game implements Bean {
 
@@ -18,17 +22,23 @@ public class Game implements Bean {
 	private Long id;
 	private String name;
 	private Type type;
-	private double points;
 
-	@ManyToOne
-	private Player player;
-
-	@ManyToOne
-	private Score score;
+	@OneToMany(cascade = CascadeType.ALL)
+	@XmlTransient
+	private List<Score> score;
+	
+	public enum Type {
+		PUZZLE,
+		FPS,
+		ACTION,
+		RPG,
+		MAZE,
+		STRAGY
+	}
 
 	public Game() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Game(Long id) {
@@ -37,13 +47,11 @@ public class Game implements Bean {
 
 	}
 
-	public Game(Long id, String name, Type type, double points, Player player, Score score) {
-		this();
+	public Game(Long id, String name, Type type, List<Score> score) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.type = type;
-		this.points = points;
-		this.player = player;
 		this.score = score;
 	}
 
@@ -63,40 +71,22 @@ public class Game implements Bean {
 		this.type = type;
 	}
 
-	public double getPoints() {
-		return points;
-	}
-
-	public void setPoints(double points) {
-		this.points = points;
-	}
-
-	public Player getPlayer() {
-		return player;
-	}
-
-	public void setPlayer(Player player) {
-		this.player = player;
-	}
-
-	public Score getScore() {
+	public List<Score> getScore() {
 		return score;
 	}
 
-	public void setScore(Score score) {
+	public void setScore(List<Score> score) {
 		this.score = score;
 	}
 
 	@Override
 	public Long getId() {
-		// TODO Auto-generated method stub
 		return id;
 	}
 
 	@Override
 	public void setId(Long id) {
 		this.id = id;
-
 	}
 
 	@Override
@@ -105,10 +95,6 @@ public class Game implements Bean {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((player == null) ? 0 : player.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(points);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((score == null) ? 0 : score.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
@@ -132,13 +118,6 @@ public class Game implements Bean {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
-			return false;
-		if (player == null) {
-			if (other.player != null)
-				return false;
-		} else if (!player.equals(other.player))
-			return false;
-		if (Double.doubleToLongBits(points) != Double.doubleToLongBits(other.points))
 			return false;
 		if (score == null) {
 			if (other.score != null)
