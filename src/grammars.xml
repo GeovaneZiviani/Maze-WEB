@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<grammars xmlns="http://wadl.dev.java.net/2009/02" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xi="http://www.w3.org/1999/XML/xinclude">
+
+	<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+		<xs:element name="player" type="player" />
+
+		<xs:element name="players" type="players" />
+
+		<xs:complexType name="players">
+			<xs:sequence>
+				<xs:element name="link" type="jaxbLink" minOccurs="0"
+					maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+
+		<xs:complexType name="jaxbLink">
+			<xs:sequence />
+			<xs:attribute name="href" type="xs:string" />
+			<xs:anyAttribute namespace="##other" processContents="skip" />
+		</xs:complexType>
+
+		<xs:complexType name="player">
+			<xs:sequence>
+				<xs:element name="nickName" type="xs:string" minOccurs="0" />
+				<xs:element name="point" type="xs:number" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:schema>
+
+
+</grammars>

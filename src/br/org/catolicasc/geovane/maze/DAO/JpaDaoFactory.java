@@ -4,7 +4,7 @@ public class JpaDaoFactory {
 
 	public static JpaDaoFactory instance = new JpaDaoFactory();
 	
-	private GameDAO gameDAO;
+	private PlayerDAO playerDAO;
 	
 
 	private JpaDaoFactory() {}
@@ -14,10 +14,10 @@ public class JpaDaoFactory {
 	}
 	
 	
-	public GameDAO getGameDao(){
-		if(this.gameDAO == null)
-			this.gameDAO = new GameDAO();
-		return this.gameDAO;
+	public PlayerDAO getPlayerDao(){
+		if(this.playerDAO == null)
+			this.playerDAO = new PlayerDAO();
+		return this.playerDAO;
 	}
 
 }

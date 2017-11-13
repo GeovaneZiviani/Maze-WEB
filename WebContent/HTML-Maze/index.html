@@ -1,18 +1,57 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <title>HTML5 maze game</title>
-</head>
-<body>
-    <h2>HTML5 Maze Game</h2>
-    <p>
-        Welcome!<br />        
-        This is a HTML5 Maze Game created by <a href="http://www.codeproject.com/script/Membership/View.aspx?mid=8966127">ProgramFOX</a>.
-    </p>
-    <canvas width="616" height="556" id="mazecanvas">Can't load the maze game, because your browser doesn't support HTML5.</canvas>
-    <noscript>JavaScript is not enabled. To play the game, you should enable it.</noscript>
+    <head>
+       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">	
+       <title>Cervejaria REST</title>
+       <script src="jquery-1.10.2.min.js"></script>
+       <script src="json.js"></script>
+      
+    </head>
+    <body>
     
-	<script src="js/build-maze.js"></script>
-
-</body>
-</html>
+        <fieldset>
+         <legend>Criar nova cerveja</legend>
+         <form id="criarCervejaForm">
+             <label>Nome</label> 
+             <input type="text" name="nome" /> 
+             <br /> 
+             <label>Cervejaria</label>
+             <input type="text" name="cervejaria" /> 
+             <br /> 
+             <label>Descrição</label>
+             <input type="text" name="descricao" /> 
+             <br /> 
+             <label>Tipo</label> 
+             <select name="tipo">
+                 <option value="LAGER" selected="selected">Lager</option>
+                 <option value="PILSEN">Pilsen</option>
+                 <option value="BOCK">Bock</option>
+                 <option value="WEIZEN">Weizen</option>
+             </select> 
+             <input type="button" value="Criar" onclick="adicionaCerveja();" />
+ 
+         </form>
+     </fieldset>
+ 
+       <fieldset>
+          <legend>Listagem de cervejas</legend>
+          <table id="grid">
+             <thead>
+                <tr>
+                   <th>Nome</th>
+                   <th>Cervejaria</th>
+                   <th>Descrição</th>
+                   <th>Tipo</th>
+                   <th>Opções</th>
+                </tr>
+             </thead>
+             <tr>
+                <td colspan="5">Carregando...</td>
+             </tr>
+          </table>
+       </fieldset>
+       
+       <script type="text/javascript">
+           listarCervejas();
+       </script>
+    </body>
+ </html>
