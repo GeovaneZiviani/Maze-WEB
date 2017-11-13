@@ -27,6 +27,7 @@ public class Game implements Bean {
 	@XmlTransient
 	private List<Score> score;
 	
+	
 	public enum Type {
 		PUZZLE,
 		FPS,

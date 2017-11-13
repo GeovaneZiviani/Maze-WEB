@@ -1,19 +1,15 @@
 package br.org.catolicasc.geovane.maze.model;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 @NamedQuery(name="Player.searchByName", query="SELECT c FROM Player c where c.nickName = :nickName ") 
@@ -38,8 +34,6 @@ public class Player implements Bean, Serializable {
 	@ManyToOne
 	private Game game;
 
-
-	
 	public Player() {
 		super();
 
@@ -50,8 +44,7 @@ public class Player implements Bean, Serializable {
 		this.id = id;
 	}
 
-	
-	
+
 	public Player(Long id, String nickName, double point, Score score, Game game) {
 		this();
 		this.id = id;
@@ -154,8 +147,5 @@ public class Player implements Bean, Serializable {
 			return false;
 		return true;
 	}
-
-	
-	
 
 }

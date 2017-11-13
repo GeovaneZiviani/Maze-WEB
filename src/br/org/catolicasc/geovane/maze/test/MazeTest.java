@@ -10,7 +10,6 @@ import br.org.catolicasc.geovane.maze.DAO.GameDAO;
 import br.org.catolicasc.geovane.maze.model.Game;
 import br.org.catolicasc.geovane.maze.model.Player;
 import br.org.catolicasc.geovane.maze.model.Score;
-import br.org.catolicasc.geovane.maze.model.Type;
 
 public class MazeTest {
 	//
@@ -68,17 +67,13 @@ public class MazeTest {
 		score.setPlayers(new ArrayList<Player>());
 		score.getPlayers().add(player1);
 		score.getPlayers().add(player2);
-		
+
 		//
 		Game game = new Game();
-		game.setType(Type.MAZE);
 		game.setName("Runner");
 		game.setScore(new ArrayList<>());
 		game.getScore().add(score);
-
-		
 		games.add(game);
-
 
 	}
 

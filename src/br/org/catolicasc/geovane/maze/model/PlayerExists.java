@@ -2,6 +2,11 @@ package br.org.catolicasc.geovane.maze.model;
 
 public class PlayerExists extends RuntimeException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public PlayerExists() {
 	}
 
