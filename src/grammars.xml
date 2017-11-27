@@ -24,7 +24,7 @@
 		<xs:complexType name="player">
 			<xs:sequence>
 				<xs:element name="nickName" type="xs:string" minOccurs="0" />
-				<xs:element name="point" type="xs:number" minOccurs="0" />
+				<xs:element name="point" type="xs:double" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:schema>

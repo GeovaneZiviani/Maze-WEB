@@ -1,57 +1,75 @@
+<!DOCTYPE html>
 <html>
-    <head>
-       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">	
-       <title>Cervejaria REST</title>
-       <script src="jquery-1.10.2.min.js"></script>
-       <script src="json.js"></script>
-      
-    </head>
-    <body>
-    
-        <fieldset>
-         <legend>Criar nova cerveja</legend>
-         <form id="criarCervejaForm">
-             <label>Nome</label> 
-             <input type="text" name="nome" /> 
-             <br /> 
-             <label>Cervejaria</label>
-             <input type="text" name="cervejaria" /> 
-             <br /> 
-             <label>Descrição</label>
-             <input type="text" name="descricao" /> 
-             <br /> 
-             <label>Tipo</label> 
-             <select name="tipo">
-                 <option value="LAGER" selected="selected">Lager</option>
-                 <option value="PILSEN">Pilsen</option>
-                 <option value="BOCK">Bock</option>
-                 <option value="WEIZEN">Weizen</option>
-             </select> 
-             <input type="button" value="Criar" onclick="adicionaCerveja();" />
- 
-         </form>
-     </fieldset>
- 
-       <fieldset>
-          <legend>Listagem de cervejas</legend>
-          <table id="grid">
-             <thead>
-                <tr>
-                   <th>Nome</th>
-                   <th>Cervejaria</th>
-                   <th>Descrição</th>
-                   <th>Tipo</th>
-                   <th>Opções</th>
-                </tr>
-             </thead>
-             <tr>
-                <td colspan="5">Carregando...</td>
-             </tr>
-          </table>
-       </fieldset>
-       
-       <script type="text/javascript">
-           listarCervejas();
-       </script>
-    </body>
- </html>
+
+<head>
+    <title>HTML5 maze game</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/maze.css">
+    <link rel="stylesheet" type="text/css" href="css/modal.css">
+</head>
+
+<body>
+    <script>
+        function teste() {
+            var btn = document.getElementById("myBtn");
+
+            btn.onclick = function () {
+                var maze = document.getElementById('img-maze');
+                maze.parentNode.removeChild.remove(maze);
+                alert("asd");
+            };
+
+        }
+    </script>
+
+    <h2>HTML5 Maze Game</h2>
+    <p>
+        Welcome!
+        <br /> This is a HTML5 Maze Game created by
+        <a href="http://www.codeproject.com/script/Membership/View.aspx?mid=8966127">ProgramFOX</a>.
+    </p>
+
+    <form id="form-modal">
+        <div class="align-center">
+            <canvas width="616" height="556" id="mazecanvas" class="canvas canvas">Can't load the maze game, because your browser doesn't support HTML5.</canvas>
+        </div>
+        <br>
+        <section>
+            <div class="content" id="game-panel">
+                <button type="button" id="myBtn" onclick="teste()"> Start</button>
+                <button type="button" id="score" value="score">Score</button>
+
+            </div>
+        </section>
+    </form>
+
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+
+            <form id="form-adiciona">
+                <section class="container">
+                    <div class="">
+                        <label for="nome">Nickname:</label>
+                        <input id="nickName" name="nickName" type="text" placeholder="insert your nickname" class="campo">
+                    </div>
+                </section>
+
+            </form>
+            <button type="button" class="btn btn-primary" value="Salvar" onclick="play();" id="play"> Start </button>
+
+        </div>
+
+    </div>
+
+
+    <noscript>JavaScript is not enabled. To play the game, you should enable it.</noscript>
+    <script src="js/build-maze.js"></script>
+    <script src="js/modal.js"></script>
+</body>
+
+</html>
