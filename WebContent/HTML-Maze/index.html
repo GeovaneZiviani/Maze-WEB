@@ -11,39 +11,30 @@
 </head>
 
 <body>
-    <script>
-        function teste() {
-            var btn = document.getElementById("myBtn");
-
-            btn.onclick = function () {
-                var maze = document.getElementById('img-maze');
-                maze.parentNode.removeChild.remove(maze);
-                alert("asd");
-            };
-
-        }
-    </script>
 
     <h2>HTML5 Maze Game</h2>
     <p>
         Welcome!
         <br /> This is a HTML5 Maze Game created by
-        <a href="http://www.codeproject.com/script/Membership/View.aspx?mid=8966127">ProgramFOX</a>.
+        <a href="http://www.codeproject.com/script/Membership/Views.aspx?mid=8966127">ProgramFOX</a>.
     </p>
+<form>
+    <div class="container" id="img-maze">
+            <img src ="img-maze/maze.png"/>
+    </div>
 
-    <form id="form-modal">
+           
+</form>
         <div class="align-center">
-            <canvas width="616" height="556" id="mazecanvas" class="canvas canvas">Can't load the maze game, because your browser doesn't support HTML5.</canvas>
+            <canvas width="616" height="556" id="mazecanvas" class="canvas canvas" hidden >Can't load the maze game, because your browser doesn't support HTML5.</canvas>
         </div>
         <br>
         <section>
             <div class="content" id="game-panel">
-                <button type="button" id="myBtn" onclick="teste()"> Start</button>
+                <button type="button" id="myBtn" > Start</button>
                 <button type="button" id="score" value="score">Score</button>
-
             </div>
         </section>
-    </form>
 
     <div id="myModal" class="modal">
         <!-- Modal content -->
@@ -60,16 +51,29 @@
                 </section>
 
             </form>
-            <button type="button" class="btn btn-primary" value="Salvar" onclick="play();" id="play"> Start </button>
+            <button type="button" class="btn btn-primary" value="Salvar"  id="play"> Start </button>
 
         </div>
 
     </div>
 
+    <script>
+        function hiddenCanva(){
+            
+            var query="mazecanvas[x='0'][y='0'][height=a'616'][width='556']";
+            
+            var canvas=document.querySelector(query);
+
+            canvas.style.display="none";
+        }
+        hiddenCanva();
+
+    </script>
 
     <noscript>JavaScript is not enabled. To play the game, you should enable it.</noscript>
     <script src="js/build-maze.js"></script>
     <script src="js/modal.js"></script>
+
 </body>
 
 </html>

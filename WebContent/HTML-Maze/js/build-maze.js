@@ -3,16 +3,17 @@
 
 // 425 (X), 3 (Y) RECTANGLE
 // 542 (center X), 122 (center Y) CIRCLE
+var btn = document.getElementById("play");
+var canvas = document.getElementById("mazecanvas");
+var context = canvas.getContext("2d");
+var currRectX = 425;
+var currRectY = 3;
+var mazeWidth = 556;
+var mazeHeight = 556;
+var intervalVar;
+
 
 function play() {
-  var btn = document.getElementById("play");
-  var canvas = document.getElementById("mazecanvas");
-  var context = canvas.getContext("2d");
-  var currRectX = 425;
-  var currRectY = 3;
-  var mazeWidth = 556;
-  var mazeHeight = 556;
-  var intervalVar;
 
   function drawMazeAndRectangle(rectX, rectY) {
     makeWhite(0, 0, canvas.width, canvas.height);
@@ -159,7 +160,12 @@ function play() {
   window.addEventListener("keydown", moveRect, true);
   createTimer(120); // 2 minutes
 
-  btn.onclick = function() {
-    modal.style.display = "none";
-  };
+
 }
+btn.onclick = function() {
+  modal.style.display = "none";
+  var maze = document.getElementById('img-maze');
+  maze.innerHTML ='';
+  alert('gO');
+  play();
+};
