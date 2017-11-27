@@ -11,7 +11,7 @@ var currRectY = 3;
 var mazeWidth = 556;
 var mazeHeight = 556;
 var intervalVar;
-
+var display = document.querySelector('#mazecanvas');
 
 function play() {
 
@@ -159,13 +159,12 @@ function play() {
   drawMazeAndRectangle(307, 23);
   window.addEventListener("keydown", moveRect, true);
   createTimer(120); // 2 minutes
-
-
+  
 }
 btn.onclick = function() {
   modal.style.display = "none";
   var maze = document.getElementById('img-maze');
   maze.innerHTML ='';
-  alert('gO');
+  display.style.display="block";
   play();
 };

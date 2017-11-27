@@ -26,7 +26,7 @@
            
 </form>
         <div class="align-center">
-            <canvas width="616" height="556" id="mazecanvas" class="canvas canvas" hidden >Can't load the maze game, because your browser doesn't support HTML5.</canvas>
+            <canvas width="616" height="556" id="mazecanvas" class="canvas" hidden >Can't load the maze game, because your browser doesn't support HTML5.</canvas>
         </div>
         <br>
         <section>
@@ -56,19 +56,6 @@
         </div>
 
     </div>
-
-    <script>
-        function hiddenCanva(){
-            
-            var query="mazecanvas[x='0'][y='0'][height=a'616'][width='556']";
-            
-            var canvas=document.querySelector(query);
-
-            canvas.style.display="none";
-        }
-        hiddenCanva();
-
-    </script>
 
     <noscript>JavaScript is not enabled. To play the game, you should enable it.</noscript>
     <script src="js/build-maze.js"></script>
