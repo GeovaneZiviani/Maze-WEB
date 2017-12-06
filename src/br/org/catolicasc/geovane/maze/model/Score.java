@@ -1,18 +1,16 @@
 package br.org.catolicasc.geovane.maze.model;
 
 import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
+
 
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -24,16 +22,14 @@ public class Score implements Bean, Serializable {
 	@GeneratedValue
 	private Long id;
 
-	@XmlElementWrapper(name = "players")
-	@XmlElement(name = "player")
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Player> players;
+	@ManyToOne
+	@JoinColumn(name = "game_id")
+	private Game game;
 	
-	
-
 
 	@ManyToOne
-	private Game game;
+	@JoinColumn(name = "player_id")
+	private Player player;
 
 	public Score() {
 		super();
@@ -45,20 +41,13 @@ public class Score implements Bean, Serializable {
 
 	}
 
-	public Score(Long id, List<Player> players, Game game) {
+	public Score(Long id, Game game, Player player) {
 		this();
 		this.id = id;
-		this.players = players;
 		this.game = game;
+		this.player = player;
 	}
 
-	public List<Player> getPlayers() {
-		return players;
-	}
-
-	public void setPlayers(List<Player> players) {
-		this.players = players;
-	}
 
 	public Game getGame() {
 		return game;
@@ -68,9 +57,17 @@ public class Score implements Bean, Serializable {
 		this.game = game;
 	}
 
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+
 	@Override
 	public Long getId() {
-		// TODO Auto-generated method stub
+
 		return id;
 	}
 
@@ -86,7 +83,7 @@ public class Score implements Bean, Serializable {
 		int result = 1;
 		result = prime * result + ((game == null) ? 0 : game.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((players == null) ? 0 : players.hashCode());
+		result = prime * result + ((player == null) ? 0 : player.hashCode());
 		return result;
 	}
 
@@ -109,10 +106,10 @@ public class Score implements Bean, Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (players == null) {
-			if (other.players != null)
+		if (player == null) {
+			if (other.player != null)
 				return false;
-		} else if (!players.equals(other.players))
+		} else if (!player.equals(other.player))
 			return false;
 		return true;
 	}

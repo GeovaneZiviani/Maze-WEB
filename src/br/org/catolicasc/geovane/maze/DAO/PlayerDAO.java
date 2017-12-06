@@ -10,7 +10,7 @@ import br.org.catolicasc.geovane.maze.model.Player;
 public class PlayerDAO extends JpaDaoBase<Player> implements IDao<Player> {
 	
 	public Player searchByName(String nickName) {
-		Query query = em.createNamedQuery("Player. searchByName").setParameter("nickName", nickName);
+		Query query = em.createNamedQuery("Player.searchByName").setParameter("nickName", nickName);
 		List<Player> players = query.getResultList();
 		if (!players.isEmpty())
 			return players.get(0);

@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 public class JPAUtil {
 
 	private static EntityManagerFactory emf = 
-			Persistence.createEntityManagerFactory("MazeWebProject");
+			Persistence.createEntityManagerFactory("mazewebproject");
 
 	public static EntityManager getEntityManager() {
 		return emf.createEntityManager();

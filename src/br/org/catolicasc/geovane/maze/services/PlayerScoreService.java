@@ -17,10 +17,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.Response.Status;
+
 import br.org.catolicasc.geovane.maze.DAO.PlayerDAO;
 import br.org.catolicasc.geovane.maze.model.Player;
 import br.org.catolicasc.geovane.maze.model.PlayerExists;
-import br.org.catolicasc.geovane.maze.model.rest.Players;
+import br.org.catolicasc.geovane.maze.rest.Players;
 
 @Path("/players")
 @Consumes({ MediaType.TEXT_XML, MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
@@ -50,7 +51,7 @@ public class PlayerScoreService {
 	}
 
 	@POST
-	public Response createPLayer(Player player) {
+	public Response createPlayer(Player player) {
 
 		try {
 			playerDao.salva(player);
@@ -65,7 +66,7 @@ public class PlayerScoreService {
 
 	@PUT
 	@Path("{nickName}")
-	public void playerUpdate(@PathParam("nickName") String nickName, Player player) {
+	public void PlayerUpdate(@PathParam("nickName") String nickName, Player player) {
 		findPlayer(nickName);
 		player.setNickName(nickName);
 		playerDao.atualiza(player);

@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -15,6 +17,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+@NamedQuery(name="Game.searchByName", query="SELECT c FROM Game c where c.name = :name ") 
 public class Game implements Bean {
 
 	@Id
@@ -22,19 +25,14 @@ public class Game implements Bean {
 	private Long id;
 	private String name;
 	private Type type;
-
-	@OneToMany(cascade = CascadeType.ALL)
-	@XmlTransient
-	private List<Score> score;
 	
+	@OneToMany(mappedBy = "game",  targetEntity = Score.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@XmlTransient
+	private List<Score> scores;
+
 	
 	public enum Type {
-		PUZZLE,
-		FPS,
-		ACTION,
-		RPG,
-		MAZE,
-		STRAGY
+		PUZZLE, FPS, ACTION, RPG, MAZE, STRAGY
 	}
 
 	public Game() {
@@ -48,12 +46,13 @@ public class Game implements Bean {
 
 	}
 
-	public Game(Long id, String name, Type type, List<Score> score) {
-		super();
+	
+	public Game(Long id, String name, Type type, List<Score> scores, List<Player> players) {
+		this();
 		this.id = id;
 		this.name = name;
 		this.type = type;
-		this.score = score;
+		this.scores = scores;
 	}
 
 	public String getName() {
@@ -72,18 +71,20 @@ public class Game implements Bean {
 		this.type = type;
 	}
 
-	public List<Score> getScore() {
-		return score;
+	public List<Score> getScores() {
+		return scores;
 	}
 
-	public void setScore(List<Score> score) {
-		this.score = score;
+	public void setScores(List<Score> scores) {
+		this.scores = scores;
 	}
 
 	@Override
 	public Long getId() {
 		return id;
 	}
+
+
 
 	@Override
 	public void setId(Long id) {
@@ -96,7 +97,7 @@ public class Game implements Bean {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((score == null) ? 0 : score.hashCode());
+		result = prime * result + ((scores == null) ? 0 : scores.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
@@ -120,14 +121,15 @@ public class Game implements Bean {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (score == null) {
-			if (other.score != null)
+		if (scores == null) {
+			if (other.scores != null)
 				return false;
-		} else if (!score.equals(other.score))
+		} else if (!scores.equals(other.scores))
 			return false;
 		if (type != other.type)
 			return false;
 		return true;
 	}
+
 
 }

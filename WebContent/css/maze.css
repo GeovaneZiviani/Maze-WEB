@@ -13,17 +13,10 @@ canvas {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 165px;
+    width: 175px;
   }
 
-  #score, #start {
-    padding-left: auto;
-    padding-right: auto;
-    margin-left: auto;
-    margin-right: auto;
-    
-  }
-
+ 
   .container{
     width: 60%;
     height: 100%;
@@ -39,5 +32,11 @@ canvas {
     width: 100%;
   }
 
-
-  
+  .center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+.buttonHolder{
+  text-align: center;
+}

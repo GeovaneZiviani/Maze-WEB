@@ -30,12 +30,11 @@
 								<doc></doc>
 							</representation>
 							<representation status="404">
-								<doc>Not found.</doc>
+								<doc>404 not found.</doc>
 							</representation>
 						</representations>
 					</responseDoc>
 				</methodDoc>
-				
 			</methodDocs>
 		</classDoc>		
 	</classDocs>

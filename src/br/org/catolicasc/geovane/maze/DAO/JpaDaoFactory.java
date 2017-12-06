@@ -14,10 +14,9 @@ public class JpaDaoFactory {
 	}
 	
 	
-	public PlayerDAO getPlayerDao(){
+	public PlayerDAO geplayerDAO(){
 		if(this.playerDAO == null)
 			this.playerDAO = new PlayerDAO();
 		return this.playerDAO;
 	}
-
 }
